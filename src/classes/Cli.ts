@@ -10,11 +10,13 @@ class Cli {
   // TODO: update the vehicles property to accept Truck and Motorbike objects as well
   // TODO: You will need to use the Union operator to define additional types for the array
   // TODO: See the AbleToTow interface for an example of how to use the Union operator
+  //one array of different vehicle types, (Car OR Truck OR Motorbike)[]
   vehicles: (Car | Truck | Motorbike)[];
   selectedVehicleVin: string | undefined;
   exit: boolean = false;
 
   // TODO: Update the constructor to accept Truck and Motorbike objects as well
+  //one array of different vehicle types, Union operator
   constructor(vehicles: (Car | Truck | Motorbike)[]) {
     this.vehicles = vehicles;
   }
@@ -106,12 +108,12 @@ class Cli {
         {
           type: 'input',
           name: 'weight',
-          message: 'Enter Weight',
+          message: 'Enter Weight (lbs)',
         },
         {
           type: 'input',
           name: 'topSpeed',
-          message: 'Enter Top Speed',
+          message: 'Enter Top Speed (MPH)',
         },
       ])
       .then((answers) => {
@@ -162,12 +164,12 @@ class Cli {
         {
           type: 'input',
           name: 'weight',
-          message: 'Enter Weight',
+          message: 'Enter Weight (lbs)',
         },
         {
           type: 'input',
           name: 'topSpeed',
-          message: 'Enter Top Speed',
+          message: 'Enter Top Speed (MPH)',
         },
         {
           type: 'input',
@@ -185,9 +187,9 @@ class Cli {
           parseInt(answers.year),
           parseInt(answers.weight),
           parseInt(answers.topSpeed),
-          //wheel initialized with empty array
-          [],
-          parseInt(answers.towingCapacity)
+          [], //wheel initialized with empty array
+          parseInt(answers.towingCapacity),
+          false //isTowing initialized to false
         );
         // TODO: push the truck to the vehicles array
         this.vehicles.push(truck);
@@ -225,12 +227,12 @@ class Cli {
         {
           type: 'input',
           name: 'weight',
-          message: 'Enter Weight',
+          message: 'Enter Weight (lbs)',
         },
         {
           type: 'input',
           name: 'topSpeed',
-          message: 'Enter Top Speed',
+          message: 'Enter Top Speed (MPH)',
         },
         {
           type: 'input',
@@ -264,7 +266,8 @@ class Cli {
           parseInt(answers.weight),
           parseInt(answers.topSpeed),
           //wheel initialized with empty array
-          []
+          [],
+          false
         );
         // TODO: push the motorbike to the vehicles array
         this.vehicles.push(motorbike);
@@ -294,6 +297,7 @@ class Cli {
       ])
       .then((answers) => {
         // TODO: check if the selected vehicle is the truck
+        //instanceof operator is useful for comparing class types
         if (answers.vehicleToTow === truck) {
         // TODO: if it is, log that the truck cannot tow itself then perform actions on the truck to allow the user to select another action
         console.log("Sorry, a truck cannot tow itself.");
@@ -393,18 +397,36 @@ class Cli {
         }
         // TODO: add statements to perform the tow action only if the selected vehicle is a truck. Call the findVehicleToTow method to find a vehicle to tow and pass the selected truck as an argument. After calling the findVehicleToTow method, you will need to return to avoid instantly calling the performActions method again since findVehicleToTow is asynchronous.
         else if (answers.action === 'Start towing') {
+          // since we are only performing actions on 1 vehicle at a time, you would think we don't need to loop
+          //however, since vehicles are stored in an array, we need a way to select current vehicle
+          // this is because the performActions() is defined in the Cli class, where vehicles is a property
           for (let i = 0; i < this.vehicles.length; i++) {
             if (this.vehicles[i].vin === this.selectedVehicleVin) {
-              if (this.vehicles[i] instanceof Truck) {
-                this.findVehicleToTow(this.vehicles[i] as Truck);
-                return;
+              if (this.vehicles[i] instanceof Truck) { // since Truck is a class, we can use instanceof, not typeof
+                console.log("Vehicle is a truck and able to tow");
+                this.findVehicleToTow(this.vehicles[i] as Truck); //found that TS needs a type assertion here
+                return; // since this is async, must return to exit the performActions loop and enter findVehicleToTow()
+              } else {
+                console.log("Sorry, selected vehicle is not a truck and cannot tow");
+                // this.performActions(); - unnecessary, still in actions loop
+                // return; - unnecessary, will exit vehicle builder entirely
               }
             }
           }
         }
-
-        
         // TODO: add statements to perform the wheelie action only if the selected vehicle is a motorbike
+        else if (answers.action === 'Pop a wheelie!') {
+          for (let i = 0; i < this.vehicles.length; i++) {
+            if (this.vehicles[i].vin === this.selectedVehicleVin) {
+              if (this.vehicles[i] instanceof Motorbike) { // instanceof used again
+              // since the wheelie method is defined in the Motorbike class (not CLi), we need to call it from an instance of Motorbike, with type assertion
+                (this.vehicles[i] as Motorbike).wheelie(this.vehicles[i] as Motorbike);
+              } else {
+                console.log("Bummer, selected vehicle is not a motorbike and cannot pop a wheelie");
+              }
+            }
+          }
+        }
         else if (answers.action === 'Select or create another vehicle') {
           // start the cli to return to the initial prompt if the user wants to select or create another vehicle
           this.startCli();
