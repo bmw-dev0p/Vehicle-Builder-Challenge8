@@ -50,7 +50,7 @@ class Vehicle implements Driveable {
   // Method to stop the vehicle
   stop(): void {
     this.currentSpeed = 0;
-    this.started = false;
+    // this.started = false; // didn't want vehicle to turn off after stopping
     console.log('Vehicle stopped');
   }
 
@@ -66,11 +66,14 @@ class Vehicle implements Driveable {
 
   // Method to reverse the vehicle
   reverse(): void {
-    // Check if the vehicle is started
-    if (this.started) {
-      console.log('Vehicle reversed');
-    } else {
+    // added "stop before reversing" functionality
+    if (this.currentSpeed > 0) {
+      console.log('Stop the vehicle before reversing');
+    } else if (!this.started) {
+      // Check if the vehicle is started
       console.log('Start the vehicle first');
+    } else {
+      console.log('Vehicle reversed');
     }
   }
 }

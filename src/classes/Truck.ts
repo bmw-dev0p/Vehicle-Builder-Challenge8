@@ -20,6 +20,7 @@ class Truck extends Vehicle implements AbleToTow {
     topSpeed: number;
     wheels: Wheel[];
     towingCapacity: number;
+    isTowing: boolean;
   
     
   // TODO: Create a constructor that accepts the properties of the Truck class
@@ -36,7 +37,8 @@ class Truck extends Vehicle implements AbleToTow {
       weight: number,
       topSpeed: number,
       wheels: Wheel[],
-      towingCapacity: number
+      towingCapacity: number,
+      isTowing: boolean = false,
     ) {
       // Call the constructor of the parent class, Vehicle
       super();
@@ -58,6 +60,7 @@ class Truck extends Vehicle implements AbleToTow {
       } else {
         this.wheels = wheels;
       }
+      this.isTowing = isTowing;
     }
 
   // TODO: Implement the tow method from the AbleToTow interface
@@ -65,16 +68,23 @@ class Truck extends Vehicle implements AbleToTow {
     // TODO: Get the make an model of the vehicle if it exists
     const currentMake = this.make;
     const currentModel = this.model;
-    // TODO: Check if the vehicle's weight is less than or equal to the truck's towing capacity
-    if (vehicle.weight <= this.towingCapacity) {
-    // TODO: If it is, log that the vehicle is being towed
-      console.log(`The ${currentMake} ${currentModel} is being towed`);
+    //added functionality of logging isTowing status
+    if (!this.isTowing) {
+      // TODO: Check if the vehicle's weight is less than or equal to the truck's towing capacity
+      if (vehicle.weight <= this.towingCapacity) {
+      // TODO: If it is, log that the vehicle is being towed
+        console.log(`The ${currentMake} ${currentModel} is towing the ${vehicle.make} ${vehicle.model}`);
+        this.isTowing = true;
+      }
+      // TODO: If it is not, log that the vehicle is too heavy to be towed
+      else {
+        console.log(`The ${vehicle.make} ${vehicle.model} is too heavy to be towed by the ${currentMake} ${currentModel}'s towing capacity of ${this.towingCapacity} lbs`);
+      }
+    } else {
+      console.log(`${currentMake} ${currentModel} stopped towing the ${vehicle.make} ${vehicle.model}`);
+      this.isTowing = false;
     }
-    // TODO: If it is not, log that the vehicle is too heavy to be towed
-    else {
-      console.log(`The ${currentMake} ${currentModel} is too heavy to be towed`);
-    }
-  }
+  }    
 
   // TODO: Override the printDetails method from the Vehicle class
   override printDetails(): void {
@@ -82,7 +92,6 @@ class Truck extends Vehicle implements AbleToTow {
     // TODO: The method should call the printDetails method of the parent class
     // Call the printDetails method of the parent class, Vehicle
     super.printDetails();
-
     
     // TODO: The method should log the details of the Truck
     // TODO: The details should include the VIN, make, model, year, weight, top speed, color, towing capacity, and wheels
@@ -108,6 +117,9 @@ class Truck extends Vehicle implements AbleToTow {
     console.log(
       `Wheel 4: ${this.wheels[3].getDiameter} inch with a ${this.wheels[3].getTireBrand} tire`
     );
+    if (this.isTowing) {
+      console.log(`${this.make} ${this.model} is towing another vehicle.`);
+    }
   }
 }
 

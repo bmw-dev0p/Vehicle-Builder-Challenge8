@@ -16,6 +16,7 @@ class Motorbike extends Vehicle {
   weight: number;
   topSpeed: number;
   wheels: Wheel[];
+  isWheelie: boolean;
 
   // TODO: Create a constructor that accepts the properties of the Motorbike class
     // TODO: The constructor should call the constructor of the parent class, Vehicle
@@ -31,12 +32,7 @@ class Motorbike extends Vehicle {
       weight: number,
       topSpeed: number,
       wheels: Wheel[],
-      //extra motorbike properties
-      fwDiameter: number,
-      fwBrand: string,
-      bwDiameter: number,
-      bwBrand: string
-
+      isWheelie: boolean = false
     ) {
       // Call the constructor of the parent class, Vehicle
       super();
@@ -56,6 +52,7 @@ class Motorbike extends Vehicle {
       } else {
         this.wheels = wheels;
       }
+      this.isWheelie = isWheelie;
     }
 
   // TODO: Implement the wheelie method
@@ -63,7 +60,13 @@ class Motorbike extends Vehicle {
     // TODO: The method should log the message "Motorbike [make] [model] is doing a wheelie!"
     const currentMake = this.make;
     const currentModel = this.model;
-    console.log(`Motorbike ${currentMake} ${currentModel} is doing a wheelie!`);
+    if (!this.isWheelie) {
+      console.log(`GNARLY! ${currentMake} ${currentModel} is doing a wheelie!`);
+      this.isWheelie = true;
+    } else {
+    console.log(`${currentMake} ${currentModel} stopped doing a wheelie.`);
+    this.isWheelie = false;
+    }
   }
   // TODO: Override the printDetails method from the Vehicle class
   override printDetails(): void {
@@ -78,20 +81,15 @@ class Motorbike extends Vehicle {
   console.log(`Year: ${this.year}`);
   console.log(`Weight: ${this.weight} lbs`);
   console.log(`Top Speed: ${this.topSpeed} mph`);
-
-  // wheels
+  // wheels -only 2
   console.log(
-    `Wheel 1: ${this.wheels[0].getDiameter} inch with a ${this.wheels[0].getTireBrand} tire`
-  );
+    `Wheel 1: ${this.wheels[0].getDiameter} inch with a ${this.wheels[0].getTireBrand} tire`);
   console.log(
-    `Wheel 2: ${this.wheels[1].getDiameter} inch with a ${this.wheels[1].getTireBrand} tire`
-  );
-  console.log(
-    `Wheel 3: ${this.wheels[2].getDiameter} inch with a ${this.wheels[2].getTireBrand} tire`
-  );
-  console.log(
-    `Wheel 4: ${this.wheels[3].getDiameter} inch with a ${this.wheels[3].getTireBrand} tire`
-  );
+    `Wheel 2: ${this.wheels[1].getDiameter} inch with a ${this.wheels[1].getTireBrand} tire`);
+//added functionality to print wheelie
+  if (this.isWheelie) {
+    console.log(`${this.make} ${this.model} is doing a wheelie!`);
+  } 
 }
 }
 
