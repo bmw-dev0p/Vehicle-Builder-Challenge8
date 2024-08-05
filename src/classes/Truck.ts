@@ -10,58 +10,58 @@ class Truck extends Vehicle implements AbleToTow {
   // TODO: Declare properties of the Truck class
   // TODO: The properties should include vin, color, make, model, year, weight, top speed, wheels, and towing capacity
   // TODO: The types should be as follows: vin (string), color (string), make (string), model (string), year (number), weight (number), topSpeed (number), wheels (Wheel[]), towingCapacity (number)
-    // Declare properties
-    vin: string;
-    color: string;
-    make: string;
-    model: string;
-    year: number;
-    weight: number;
-    topSpeed: number;
-    wheels: Wheel[];
-    towingCapacity: number;
-    isTowing: boolean;
-  
-    
+  // Declare properties
+  vin: string;
+  color: string;
+  make: string;
+  model: string;
+  year: number;
+  weight: number;
+  topSpeed: number;
+  wheels: Wheel[];
+  towingCapacity: number;
+  isTowing: boolean;
+
+
   // TODO: Create a constructor that accepts the properties of the Truck class
-    // TODO: The constructor should call the constructor of the parent class, Vehicle
-    // TODO: The constructor should initialize the properties of the Truck class
-    // TODO: The constructor should check if the wheels array has 4 elements and create 4 new default Wheel objects if it does not
-    // Constructor
-    constructor(
-      vin: string,
-      color: string,
-      make: string,
-      model: string,
-      year: number,
-      weight: number,
-      topSpeed: number,
-      wheels: Wheel[],
-      towingCapacity: number,
-      isTowing: boolean = false,
-    ) {
-      // Call the constructor of the parent class, Vehicle
-      super();
-  
-      // Initialize properties 
-      this.vin = vin;
-      this.color = color;
-      this.make = make;
-      this.model = model;
-      this.year = year;
-      this.weight = weight;
-      this.topSpeed = topSpeed;
-      this.towingCapacity = towingCapacity;
-      // Check if the wheels array has 4 elements
-      // If not, create 4 new Wheel objects
-      // Otherwise, use the provided wheels array
-      if (wheels.length !== 4) {
-        this.wheels = [new Wheel(), new Wheel(), new Wheel(), new Wheel()];
-      } else {
-        this.wheels = wheels;
-      }
-      this.isTowing = isTowing;
+  // TODO: The constructor should call the constructor of the parent class, Vehicle
+  // TODO: The constructor should initialize the properties of the Truck class
+  // TODO: The constructor should check if the wheels array has 4 elements and create 4 new default Wheel objects if it does not
+  // Constructor
+  constructor(
+    vin: string,
+    color: string,
+    make: string,
+    model: string,
+    year: number,
+    weight: number,
+    topSpeed: number,
+    wheels: Wheel[],
+    towingCapacity: number,
+    isTowing: boolean = false,
+  ) {
+    // Call the constructor of the parent class, Vehicle
+    super();
+
+    // Initialize properties 
+    this.vin = vin;
+    this.color = color;
+    this.make = make;
+    this.model = model;
+    this.year = year;
+    this.weight = weight;
+    this.topSpeed = topSpeed;
+    this.towingCapacity = towingCapacity;
+    // Check if the wheels array has 4 elements
+    // If not, create 4 new Wheel objects
+    // Otherwise, use the provided wheels array
+    if (wheels.length !== 4) {
+      this.wheels = [new Wheel(), new Wheel(), new Wheel(), new Wheel()];
+    } else {
+      this.wheels = wheels;
     }
+    this.isTowing = isTowing;
+  }
 
   // TODO: Implement the tow method from the AbleToTow interface
   tow(vehicle: Truck | Motorbike | Car): void {
@@ -72,7 +72,7 @@ class Truck extends Vehicle implements AbleToTow {
     if (!this.isTowing) {
       // TODO: Check if the vehicle's weight is less than or equal to the truck's towing capacity
       if (vehicle.weight <= this.towingCapacity) {
-      // TODO: If it is, log that the vehicle is being towed
+        // TODO: If it is, log that the vehicle is being towed
         console.log(`The ${currentMake} ${currentModel} is towing the ${vehicle.make} ${vehicle.model}`);
         this.isTowing = true;
       }
@@ -81,18 +81,26 @@ class Truck extends Vehicle implements AbleToTow {
         console.log(`The ${vehicle.make} ${vehicle.model} is too heavy to be towed by the ${currentMake} ${currentModel}'s towing capacity of ${this.towingCapacity} lbs`);
       }
     } else {
-      console.log(`${currentMake} ${currentModel} stopped towing the ${vehicle.make} ${vehicle.model}`);
-      this.isTowing = false;
+      console.log(`${currentMake} ${currentModel} is already towing a vehicle, please use the stopTow action.`);
     }
-  }    
+  }
+
+  // stopTow(truck: Truck): void {
+  //   if (this.isTowing) {
+  //     console.log(`${this.make} ${this.model} stopped towing.`);
+  //     this.isTowing = false;
+  //   } else {
+  //     console.log(`${this.make} ${this.model} is not towing.`);
+  //   }
+  // }
 
   // TODO: Override the printDetails method from the Vehicle class
   override printDetails(): void {
-    
+
     // TODO: The method should call the printDetails method of the parent class
     // Call the printDetails method of the parent class, Vehicle
     super.printDetails();
-    
+
     // TODO: The method should log the details of the Truck
     // TODO: The details should include the VIN, make, model, year, weight, top speed, color, towing capacity, and wheels
     // Print details
