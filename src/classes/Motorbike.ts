@@ -31,7 +31,12 @@ class Motorbike extends Vehicle {
       weight: number,
       topSpeed: number,
       wheels: Wheel[],
-      towingCapacity: number
+      //extra motorbike properties
+      fwDiameter: number,
+      fwBrand: string,
+      bwDiameter: number,
+      bwBrand: string
+
     ) {
       // Call the constructor of the parent class, Vehicle
       super();
