@@ -21,8 +21,16 @@
   <br/>Step 5: After package installation, run the command ```npm run start```
   <br/>Step 6: Follow the console prompts to create vehicles and see how they interact
   ## Usage:
-  "insert screenshot here"
-  <br/>![landing](https://github.com/bmw-dev0p/Weather-Dash-Challenge9/blob/main/assets/1.jpg?raw=true)
+  Starting up program and Vehicle selection
+  <br/>![startup](https://github.com/bmw-dev0p/Vehicle-Builder-Challenge8/blob/main/assets/1.jpg?raw=true)
+  <br/>Detailed vehicle creation
+  <br/>![startup](https://github.com/bmw-dev0p/Vehicle-Builder-Challenge8/blob/main/assets/2.jpg?raw=true)
+  <br/>Vehicle actions
+  <br/>![startup](https://github.com/bmw-dev0p/Vehicle-Builder-Challenge8/blob/main/assets/3.jpg?raw=true)
+  <br/>Vehicle driving example
+  <br/>![startup](https://github.com/bmw-dev0p/Vehicle-Builder-Challenge8/blob/main/assets/4.jpg?raw=true)
+  <br/>Truck special action - Towing example
+  <br/>![startup](https://github.com/bmw-dev0p/Vehicle-Builder-Challenge8/blob/main/assets/5.jpg?raw=true)
   ## Features:
   ### Coding Language(s): 
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
@@ -31,8 +39,7 @@
 ### Framework(s): 
 ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
 ![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white)
-![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB) 
-<br/>Node.js, NPM, Express.js
+<br/>Node.js, NPM
 ### Other Features: 
 - Console only application - no browser required
 - User interaction from text based commands
