@@ -24,13 +24,13 @@
   Starting up program and Vehicle selection
   <br/>![startup](https://github.com/bmw-dev0p/Vehicle-Builder-Challenge8/blob/main/assets/1.jpg?raw=true)
   <br/>Detailed vehicle creation
-  <br/>![startup](https://github.com/bmw-dev0p/Vehicle-Builder-Challenge8/blob/main/assets/2.jpg?raw=true)
+  <br/>![create](https://github.com/bmw-dev0p/Vehicle-Builder-Challenge8/blob/main/assets/2.jpg?raw=true)
   <br/>Vehicle actions
-  <br/>![startup](https://github.com/bmw-dev0p/Vehicle-Builder-Challenge8/blob/main/assets/3.jpg?raw=true)
+  <br/>![actions](https://github.com/bmw-dev0p/Vehicle-Builder-Challenge8/blob/main/assets/3.jpg?raw=true)
   <br/>Vehicle driving example
-  <br/>![startup](https://github.com/bmw-dev0p/Vehicle-Builder-Challenge8/blob/main/assets/4.jpg?raw=true)
+  <br/>![drive](https://github.com/bmw-dev0p/Vehicle-Builder-Challenge8/blob/main/assets/4.jpg?raw=true)
   <br/>Truck special action - Towing example
-  <br/>![startup](https://github.com/bmw-dev0p/Vehicle-Builder-Challenge8/blob/main/assets/5.jpg?raw=true)
+  <br/>![tow](https://github.com/bmw-dev0p/Vehicle-Builder-Challenge8/blob/main/assets/5.jpg?raw=true)
   ## Features:
   ### Coding Language(s): 
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)

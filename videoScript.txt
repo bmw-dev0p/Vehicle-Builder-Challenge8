@@ -1,0 +1,15 @@
+Hello, my name is Brad Webster and I am student software developer at the U of R
+Welcome to my video! This is going to be a walkthrough of my coding project - Vehicle Builder.
+This project is coded in Typescript that runs in Nodejs environment with no user interface except for text (keyboard) input.
+This is because this is a back end practice project to demonstrate object oriented programming, specifically js classes and interfaces.
+
+The way this is demonstrated is by taking user input to create 3 types of vehicles car, truck, motorcycle
+It collects the more vehicle data from the user, like vin, make, model, color
+It then takes the vehicle objects and implements a couple basic methods like driving (start engine, acc, dec, stop, reverse, etc)
+A couple extra methods like tow other vehicle + wheelie
+
+I think this is better explained by example, so Without further ado, lets walk through this program
+
+Things that I would implement if I had more time:
+Rework the Vehicle class to hold more common variables (vin, make, model, color)
+Graphical User interface: (Buttons / images of cars)
